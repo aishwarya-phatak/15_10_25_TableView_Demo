@@ -12,7 +12,6 @@ class ViewController: UIViewController{
     @IBOutlet weak var menuItemsTableView: UITableView!
     
     var vegMenuItems = ["Dosa", "Idli","Pulav","Samosa Chaat","Uttappa"]
-
     var nonvegMenuItems = ["Chicken Biryani", "Abc","Abc","Abc","Abc"]
     
     override func viewDidLoad() {
@@ -20,13 +19,11 @@ class ViewController: UIViewController{
         menuItemsTableView.delegate = self
         menuItemsTableView.dataSource = self
     }
-    
 }
 
 //MARK : Menu Table View conforms to UITableViewDataSource
 extension ViewController : UITableViewDataSource{
 
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
