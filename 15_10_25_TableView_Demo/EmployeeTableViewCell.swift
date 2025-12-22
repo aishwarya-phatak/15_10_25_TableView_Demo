@@ -16,15 +16,42 @@ class EmployeeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("awake from Nib called")
         
+        employeeIdLabel.layer.cornerRadius = 2.0
+        employeeIdLabel.layer.borderColor = CGColor(red: 100.0,
+                                                    green: 0.0,
+                                                    blue: 100.0,
+                                                    alpha: 1.0)
+        employeeIdLabel.layer.borderWidth = 2.0
         
+        employeeIdLabel.backgroundColor = .white
+        
+        employeeCityLabel.layer.cornerRadius = 2.0
+        employeeCityLabel.layer.borderColor = CGColor(red: 100.0,
+                                                    green: 0.0,
+                                                    blue: 100.0,
+                                                    alpha: 0.4)
+        employeeCityLabel.layer.borderWidth = 2.0
+        
+        employeeCityLabel.backgroundColor = .white
+        
+        employeeNameLabel.layer.cornerRadius = 2.0
+        employeeNameLabel.layer.borderColor = CGColor(red: 100.0,
+                                                    green: 0.0,
+                                                    blue: 100.0,
+                                                    alpha: 0.4)
+        employeeNameLabel.layer.borderWidth = 2.0
+        employeeNameLabel.backgroundColor = .white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        
+        print(selected)
+        if selected == false{
+            backgroundColor = .orange
+        } else {
+            backgroundColor = .magenta
+        }
     }
-    
-    
 }

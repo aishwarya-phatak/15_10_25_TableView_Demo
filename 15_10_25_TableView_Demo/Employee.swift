@@ -5,6 +5,7 @@
 //  Created by Vishal Jagtap on 19/12/25.
 //
 
+//model class for Employee
 struct Employee{
     var empId : Int
     var empName : String
