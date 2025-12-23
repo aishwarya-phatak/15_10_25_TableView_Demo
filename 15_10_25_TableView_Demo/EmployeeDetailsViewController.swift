@@ -9,21 +9,21 @@ import UIKit
 
 class EmployeeDetailsViewController: UIViewController {
 
+    @IBOutlet weak var empNameLabel: UILabel!
+    @IBOutlet weak var empCityLabel: UILabel!
+    
+//    var empNameContainer : String?
+//    var empCityContainer : String?
+    
+    var employeeContainer : Employee?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        extractAndBindEmployeeData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func extractAndBindEmployeeData(){
+        empNameLabel.text = employeeContainer?.empName
+        empCityLabel.text = employeeContainer?.empCity
     }
-    */
-
 }

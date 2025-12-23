@@ -28,6 +28,7 @@ class EmployeeViewController: UIViewController {
         let uiNib = UINib(nibName: "EmployeeTableViewCell", bundle: nil)
         self.employeeTableView.register(uiNib, forCellReuseIdentifier: reuseIdentifierForEmployeeCell)
     }
+    
 }
 
 extension EmployeeViewController : UITableViewDataSource{
@@ -43,12 +44,31 @@ extension EmployeeViewController : UITableViewDataSource{
         employeeTableViewCell.employeeCityLabel.text = employees[indexPath.row].empCity
         return employeeTableViewCell
     }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete{
+//
+//        }
+//    }
 }
 
 extension EmployeeViewController : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section) -- \(indexPath.row)")
+        
+        let employeeDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "EmployeeDetailsViewController") as! EmployeeDetailsViewController
+        
+//        employeeDetailsViewController.empNameContainer = employees[indexPath.row].empName
+//        employeeDetailsViewController.empCityContainer = employees[indexPath.row].empCity
+        
+        let employeeObject = Employee(empId: employees[indexPath.row].empId,
+                                      empName: employees[indexPath.row].empName,
+                                      empCity: employees[indexPath.row].empCity)
+        
+        employeeDetailsViewController.employeeContainer = employeeObject
+        
+        self.navigationController?.pushViewController(employeeDetailsViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
