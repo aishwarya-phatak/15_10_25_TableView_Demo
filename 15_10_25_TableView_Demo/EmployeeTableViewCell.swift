@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol EmployeeTableViewCellDelegate : AnyObject{
+    func sendData(tagNumber : Int)
+}
+
 class EmployeeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var employeeImageView: UIImageView!
     @IBOutlet weak var employeeIdLabel: UILabel!
     @IBOutlet weak var employeeNameLabel: UILabel!
     @IBOutlet weak var employeeCityLabel: UILabel!
+    
+    var delegate1 : EmployeeTableViewCellDelegate?
+    
+    @IBOutlet weak var btnNext: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +52,7 @@ class EmployeeTableViewCell: UITableViewCell {
         employeeNameLabel.layer.borderWidth = 2.0
         employeeNameLabel.backgroundColor = .white
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -53,5 +62,9 @@ class EmployeeTableViewCell: UITableViewCell {
         } else {
             backgroundColor = .magenta
         }
+    }
+    
+    @IBAction func btnNextClicked(_ sender: UIButton) {
+        delegate1?.sendData(tagNumber: sender.tag)
     }
 }
